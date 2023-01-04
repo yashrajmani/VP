@@ -86,49 +86,123 @@
 // return 0;
 // }
 
+// #include <iostream>
+// #include <string>
+// using namespace std;
+// int main()
+// {
+
+//     string s;
+//     cin >> s;
+//     int val = 0;
+
+//     int d = s.size();
+
+//     string td = "";
+
+//     for (int i = 0; i < s.size(); i++)
+//     {
+
+//         td += s[i];
+
+//         int x = stoi(td);
+
+//         if (x % d == 0)
+//         {
+
+//             // cout << x << "%" << d << "YES" << endl;
+//             val++;
+//         }
+//         else
+//         {
+//             // cout << x << "%" << d << "NO" << endl;
+//         }
+//         d--;
+
+//         //cout << td << endl;
+//     }
+
+//     if (val == s.size())
+//     {
+//         cout << "YES" << endl;
+//     }
+//     else
+//     {
+//         cout << "NO" << endl;
+//     }
+
+//     return 0;
+// }
+
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <iomanip>
+
 using namespace std;
+
 int main()
 {
 
-    string s;
-    cin >> s;
-    int val = 0;
+    int n;
+    int rn;
+    cin >> n;
+    int ans = 0;
+    int x = 0;
+    string s = "0";
+    int final = 0;
 
-    int d = s.size();
-
-    string td = "";
-
-    for (int i = 0; i < s.size(); i++)
+    while (x != 10)
     {
+        string rev = to_string(n);
+        string ori = to_string(n);
 
-        td += s[i];
+        reverse(rev.begin(), rev.end());
 
-        int x = stoi(td);
+        // cout << ori << " : " << rev << endl;
 
-        if (x % d == 0)
+        int one = stoi(ori);
+        int two = stoi(rev);
+
+        if (ori.size() == 2)
         {
 
-            // cout << x << "%" << d << "YES" << endl;
-            val++;
-        }
-        else
-        {
-            // cout << x << "%" << d << "NO" << endl;
-        }
-        d--;
+            //  cout<<"Two digit"<<endl;
+            ori = ori + "0";
 
-        //cout << td << endl;
+            // cout<<"TWO TWO"<<ori<<endl;
+        }
+
+        if (ori.size() == 1)
+        {
+
+            // cout<<"One digit"<<endl;
+            one = one + (one * 100);
+            // cout<<"ONE ONE ONE "<<endl;
+        }
+
+        int ans = stoi(ori) - stoi(rev);
+
+        n = ans;
+
+        // cout<<setw(3)<<setfill('0')<<ans<<endl;
+
+        if (ans == 495 || ans == -495)
+        {
+            // cout<<"REACHED AT : "<<x+1<<endl;
+            final = x + 1;
+        }
+
+        x++;
     }
 
-    if (val == s.size())
+    if (final == 0)
     {
-        cout << "YES" << endl;
+        cout << "No" << endl;
     }
     else
     {
-        cout << "NO" << endl;
+        cout << final << endl;
     }
 
     return 0;
