@@ -134,76 +134,119 @@
 //     return 0;
 // }
 
+// #include <iostream>
+// #include <string>
+// #include <algorithm>
+// #include <iomanip>
+
+// using namespace std;
+
+// int main()
+// {
+
+//     int n;
+//     int rn;
+//     cin >> n;
+//     int ans = 0;
+//     int x = 0;
+//     string s = "0";
+//     int final = 0;
+
+//     while (x != 10)
+//     {
+//         string rev = to_string(n);
+//         string ori = to_string(n);
+
+//         reverse(rev.begin(), rev.end());
+
+//         // cout << ori << " : " << rev << endl;
+
+//         int one = stoi(ori);
+//         int two = stoi(rev);
+
+//         if (ori.size() == 2)
+//         {
+
+//             //  cout<<"Two digit"<<endl;
+//             ori = ori + "0";
+
+//             // cout<<"TWO TWO"<<ori<<endl;
+//         }
+
+//         if (ori.size() == 1)
+//         {
+
+//             // cout<<"One digit"<<endl;
+//             one = one + (one * 100);
+//             // cout<<"ONE ONE ONE "<<endl;
+//         }
+
+//         int ans = stoi(ori) - stoi(rev);
+
+//         n = ans;
+
+//         // cout<<setw(3)<<setfill('0')<<ans<<endl;
+
+//         if (ans == 495 || ans == -495)
+//         {
+//             // cout<<"REACHED AT : "<<x+1<<endl;
+//             final = x + 1;
+//         }
+
+//         x++;
+//     }
+
+//     if (final == 0)
+//     {
+//         cout << "No" << endl;
+//     }
+//     else
+//     {
+//         cout << final << endl;
+//     }
+
+//     return 0;
+// }
+
 #include <iostream>
-#include <string>
-#include <algorithm>
-#include <iomanip>
-
+#include <cmath>
 using namespace std;
-
 int main()
 {
 
-    int n;
-    int rn;
+    // LOGIC:
+    // A: 1 words -- 2 sec
+    // 0.50 word =1sec;
+
+    // B:
+
+    // 1w = 3sec
+    // 0.33 word = 1sec;
+
+    // BOTH:
+    // 0.83 words in 1 sec
+
+    // 83/100 -- 1 sec
+
+    // 1 -- 100/83sec
+
+    // 1.204 sec --- 1 word -- together.
+
+    // ANS: n words= 1.204 X N;
+
+    float n;
     cin >> n;
-    int ans = 0;
-    int x = 0;
-    string s = "0";
-    int final = 0;
 
-    while (x != 10)
-    {
-        string rev = to_string(n);
-        string ori = to_string(n);
+    float ta, tb;
+    cin >> ta >> tb;
+float wa=1/ta;
+float wb=1/tb;
 
-        reverse(rev.begin(), rev.end());
+    float tot = wa + wb;
+    float tot2=1/tot;
 
-        // cout << ori << " : " << rev << endl;
 
-        int one = stoi(ori);
-        int two = stoi(rev);
-
-        if (ori.size() == 2)
-        {
-
-            //  cout<<"Two digit"<<endl;
-            ori = ori + "0";
-
-            // cout<<"TWO TWO"<<ori<<endl;
-        }
-
-        if (ori.size() == 1)
-        {
-
-            // cout<<"One digit"<<endl;
-            one = one + (one * 100);
-            // cout<<"ONE ONE ONE "<<endl;
-        }
-
-        int ans = stoi(ori) - stoi(rev);
-
-        n = ans;
-
-        // cout<<setw(3)<<setfill('0')<<ans<<endl;
-
-        if (ans == 495 || ans == -495)
-        {
-            // cout<<"REACHED AT : "<<x+1<<endl;
-            final = x + 1;
-        }
-
-        x++;
-    }
-
-    if (final == 0)
-    {
-        cout << "No" << endl;
-    }
-    else
-    {
-        cout << final << endl;
-    }
+    cout << ceil(tot2 * n) << endl;
 
     return 0;
 }
